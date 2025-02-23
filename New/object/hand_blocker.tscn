@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d02mh1x5npwn0"]
+
+[ext_resource type="Script" path="res://New/object/hand_blocker.gd" id="1_3yvrf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y1q6g"]
+
+[node name="Hand blocker touch" type="Node3D"]
+script = ExtResource("1_3yvrf")
+
+[node name="Det" type="Area3D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Det"]
+shape = SubResource("BoxShape3D_y1q6g")
+
+[connection signal="area_entered" from="Det" to="." method="_on_det_area_entered"]

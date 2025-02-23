@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://b3ksefst2igfy"]
+
+[ext_resource type="Script" path="res://New/object/basic_interact.gd" id="1_ugh3a"]
+[ext_resource type="FontFile" uid="uid://bcaqbinvnjarr" path="res://Player/UI/Font/VCR_OSD_MONO_1.001.ttf" id="2_h3d6t"]
+[ext_resource type="Texture2D" uid="uid://i31ascivx2xu" path="res://New/image/T_LockedDoor256.png" id="3_js32l"]
+[ext_resource type="Texture2D" uid="uid://dbkd31viy40yx" path="res://New/image/T_UnlockDoor256.png" id="4_tg2jl"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gvy2h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wbu04"]
+transparency = 1
+albedo_texture = ExtResource("3_js32l")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_baxsn"]
+flip_faces = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fg2u1"]
+transparency = 1
+albedo_texture = ExtResource("3_js32l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j3cf0"]
+transparency = 1
+albedo_texture = ExtResource("4_tg2jl")
+
+[node name="Basic interact" type="Node3D"]
+script = ExtResource("1_ugh3a")
+
+[node name="E" type="Label3D" parent="."]
+visible = false
+billboard = 1
+text = "E"
+font = ExtResource("2_h3d6t")
+outline_size = 10
+
+[node name="Locked_group" type="Node3D" parent="."]
+visible = false
+
+[node name="Locked" type="MeshInstance3D" parent="Locked_group"]
+transform = Transform3D(0.137023, 0, 0, 0, -5.98948e-09, -0.137023, 0, 0.137023, -5.98948e-09, 0, 0, 0)
+mesh = SubResource("PlaneMesh_gvy2h")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_wbu04")
+
+[node name="Lockedback" type="MeshInstance3D" parent="Locked_group"]
+transform = Transform3D(0.137023, 0, 0, 0, -5.98948e-09, -0.137023, 0, 0.137023, -5.98948e-09, 0, 8.321e-10, -0.0190362)
+mesh = SubResource("PlaneMesh_baxsn")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_fg2u1")
+
+[node name="Unlocked_group" type="Node3D" parent="."]
+visible = false
+
+[node name="Unlocked" type="MeshInstance3D" parent="Unlocked_group"]
+transform = Transform3D(0.137023, 0, 0, 0, -5.98948e-09, -0.137023, 0, 0.137023, -5.98948e-09, 0, 0, 0)
+mesh = SubResource("PlaneMesh_gvy2h")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_j3cf0")
+
+[node name="Unlockedback" type="MeshInstance3D" parent="Unlocked_group"]
+transform = Transform3D(0.137023, 0, 0, 0, -5.98948e-09, -0.137023, 0, 0.137023, -5.98948e-09, 0, 8.321e-10, -0.0190362)
+mesh = SubResource("PlaneMesh_baxsn")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_j3cf0")
