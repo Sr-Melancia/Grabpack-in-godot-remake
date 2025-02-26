@@ -34,7 +34,6 @@ func _on_purple_panel_jumped() -> void:
 
 func _on_blue_scanner_scan_complete() -> void:
 	$Player._enable_hand()
-	$Player._lower_grabpack()
 
 
 func _on_collectable_hand_collected() -> void:
@@ -55,10 +54,26 @@ func _on_green_reciever_power_recieved() -> void:
 func _on_wire_fragment_4_finished_powering() -> void:
 	$"Puzzle/Blue Scanner".powered = true
 
+func _on_no_grabpack_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		$Player._lower_grabpack()
 
-func _on_no_grabpack_area_area_entered(area: Area3D) -> void:
-	if area.is_in_group("player"): $Player._lower_grabpack()
+
+func _on_no_grabpack_area_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		$Player._raise_grabpack()
+
+func _on_green_source_regenerated() -> void:
+	$Player._unpower_green_line()
 
 
-func _on_no_grabpack_area_area_exited(area: Area3D) -> void:
-	if area.is_in_group("player"): $Player._raise_grabpack()
+func _on_green_reciever_unpowered() -> void:
+	$"wire/Wire fragment"._unpower()
+
+
+func _on_wire_fragment_4_unpowered() -> void:
+	$"Puzzle/Blue Scanner".powered = false
+
+
+func _on_green_reciever_hand_repowered() -> void:
+	$"wire/Wire fragment"._unpower()

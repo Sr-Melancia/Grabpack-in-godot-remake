@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0vwnj1772rp"]
+
+[ext_resource type="PackedScene" uid="uid://wipogv674odr" path="res://Player/player.tscn" id="1_gf2i3"]
+[ext_resource type="PackedScene" uid="uid://bs6sbw47bmc46" path="res://New/object/Ch4_scanner_R.tscn" id="2_hs3k2"]
+
+[sub_resource type="Environment" id="Environment_3ft4y"]
+
+[node name="Mechanics test" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3ft4y")
+
+[node name="Player" parent="." instance=ExtResource("1_gf2i3")]
+grabpack_version = 1
+has_flashlight = true
+defualt_hand = 2
+red_hand = true
+dash_hand = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(17.2135, 0, 0, 0, 0.0237475, 0, 0, 0, 22.1784, 0, 0, 0)
+use_collision = true
+
+[node name="Scanner" parent="." instance=ExtResource("2_hs3k2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5.7901, 0.87637, 0)

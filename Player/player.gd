@@ -360,15 +360,20 @@ func _ready():
 func _lower_grabpack():
 	new_pack_anim.play("Armature|A_FirstPersonPlayer_Lower")
 	can_shoot_boot = false
+	can_shot = false
+	$neck/head/grabpack_1/sfx/SwSfxPlayerSidleEnter01.play()
 
 func _raise_grabpack():
 	can_shoot_boot = true
+	can_shot = true
 	new_pack_anim.play("Armature|A_FirstPersonPlayer_Raise")
+	$neck/head/grabpack_1/sfx/SwSfxPlayerSidleEnter01.play()
 
 func _enable_hand():
 	can_shot = true
 	blocker_anim.emitting = false
 	hand_switch_anim = false
+	$neck/head/grabpack_1/sfx/SwSfxPlayerSidleExit01.play()
 
 @onready var green_line = $"pack_lines/line_r/line_r_main/Green line"
 

@@ -176,6 +176,12 @@ one_shot = true
 [node name="Particle timer" type="Timer" parent="."]
 one_shot = true
 
+[node name="Disabled Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="cooldown" type="Timer" parent="."]
+one_shot = true
+
 [node name="Energy" type="GPUParticles3D" parent="."]
 transform = Transform3D(0.0279245, 0, 0, 0, 0.0257756, 0, 0, 0, 0.0253834, -0.00306488, -0.0279607, 0.203149)
 emitting = false
@@ -185,6 +191,11 @@ speed_scale = 2.0
 process_material = SubResource("ParticleProcessMaterial_u3iti")
 draw_pass_1 = SubResource("BoxMesh_o1rfc")
 
+[node name="Hand_pos" type="Marker3D" parent="."]
+transform = Transform3D(-1, -8.74228e-08, 0, -3.82137e-15, 4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -0.0582073, 0.255403)
+
 [connection signal="area_entered" from="r" to="." method="_on_r_area_entered"]
 [connection signal="timeout" from="Energy timer" to="." method="_on_energy_timer_timeout"]
 [connection signal="timeout" from="Particle timer" to="." method="_on_particle_timer_timeout"]
+[connection signal="timeout" from="Disabled Timer" to="." method="_on_disabled_timer_timeout"]
+[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]

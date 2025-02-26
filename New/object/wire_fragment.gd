@@ -14,6 +14,7 @@ var powered = false
 var powering = false
 
 signal finished_powering
+signal unpowered
 
 func _ready() -> void:
 	anim.play("RESET")
@@ -33,3 +34,19 @@ func _on_timer_timeout() -> void:
 	powering = false
 	powered = true
 	emit_signal("finished_powering")
+
+var unpowering = false
+
+func _unpower():
+	if not unpowering and powered:
+		anim.play("unpower")
+		unpowering = true
+		$Timer2.start()
+
+
+func _on_timer_2_timeout() -> void:
+	powered = false
+	unpowering = false
+	emit_signal("unpowered")
+	if not last:
+		next_fragment._unpower()

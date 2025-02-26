@@ -16,10 +16,14 @@ extends StaticBody3D
 
 var state = true
 
+var power_regenerate_time = power_keep_time
+
 signal power_given
 signal regenerated
 
+
 func _ready():
+	
 	if has_power:
 		if use_ultra_light:
 			$ultra_light.visible = true
@@ -57,6 +61,11 @@ func _regenerate_power():
 
 func _on_r_area_entered(area):
 	if Player.current_hand == 2:
+		_grab()
 		_give_power()
 func _on_timer_timeout():
 	_regenerate_power()
+
+func _grab():
+	get_tree().call_group("player", "_update_r_position", $Hand_pos.global_position, $Hand_pos.global_rotation)
+	get_tree().call_group("player", "_update_r_anim", "grab_coil")

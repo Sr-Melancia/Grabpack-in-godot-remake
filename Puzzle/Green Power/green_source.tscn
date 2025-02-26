@@ -152,6 +152,9 @@ stream = ExtResource("8_fma3v")
 [node name="recieved" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_ufcds")
 
+[node name="Hand_pos" type="Marker3D" parent="."]
+transform = Transform3D(-1, -8.74228e-08, 0, -3.82137e-15, 4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -0.0434199, 0.332223)
+
 [connection signal="area_entered" from="r" to="." method="_on_r_area_entered"]
 [connection signal="area_exited" from="r" to="." method="_on_r_area_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

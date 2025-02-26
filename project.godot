@@ -33,7 +33,7 @@ project/assembly_name="grabpack_rewrite"
 
 [editor]
 
-movie_writer/movie_file="C:/Users/David Neto/Desktop/games/developing/ALL GAMES/Grabpack-In-Godot-3.0/records/rec_1.avi"
+movie_writer/movie_file="C:/Users/David Neto/Desktop/games/developing/ALL GAMES/Grabpack-In-Godot-3.0/records/rec_2.avi"
 movie_writer/fps=30
 
 [editor_plugins]

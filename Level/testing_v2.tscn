@@ -232,6 +232,14 @@ material = SubResource("StandardMaterial3D_2vmkw")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.51919, 2.00409, -20.4846)
 ultra_light = true
 
+[node name="green_reciever2" parent="Puzzle" instance=ExtResource("6_y3qjp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.51919, 3.81965, -20.4846)
+ultra_light = true
+
+[node name="green_reciever3" parent="Puzzle" instance=ExtResource("6_y3qjp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.252404, 3.81965, -20.4846)
+ultra_light = true
+
 [node name="green_source" parent="Puzzle" instance=ExtResource("7_83gp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.96543, -20.5623)
 has_power = false
@@ -309,13 +317,17 @@ play_collect_jingle = true
 [connection signal="battery_placed" from="Puzzle/Battery Socket2" to="." method="_on_battery_socket_2_battery_placed"]
 [connection signal="battery_placed" from="Puzzle/Battery Socket3" to="." method="_on_battery_socket_3_battery_placed"]
 [connection signal="burned" from="Puzzle/Flammable object" to="." method="_on_flammable_object_burned"]
+[connection signal="hand_repowered" from="Puzzle/green_reciever" to="." method="_on_green_reciever_hand_repowered"]
 [connection signal="power_recieved" from="Puzzle/green_reciever" to="." method="_on_green_reciever_power_recieved"]
+[connection signal="unpowered" from="Puzzle/green_reciever" to="." method="_on_green_reciever_unpowered"]
 [connection signal="power_given" from="Puzzle/green_source" to="." method="_on_green_source_power_given"]
+[connection signal="regenerated" from="Puzzle/green_source" to="." method="_on_green_source_regenerated"]
 [connection signal="scan_complete" from="Puzzle/Blue Scanner" to="." method="_on_blue_scanner_scan_complete"]
 [connection signal="collected" from="Item/Grabpack Item" to="." method="_on_grabpack_item_collected"]
 [connection signal="locked_attemp" from="Gates doors/Door" to="." method="_on_door_locked_attemp"]
 [connection signal="finished_powering" from="wire/Wire fragment4" to="." method="_on_wire_fragment_4_finished_powering"]
-[connection signal="area_entered" from="area3d/no_grabpack area" to="." method="_on_no_grabpack_area_area_entered"]
-[connection signal="area_exited" from="area3d/no_grabpack area" to="." method="_on_no_grabpack_area_area_exited"]
+[connection signal="unpowered" from="wire/Wire fragment4" to="." method="_on_wire_fragment_4_unpowered"]
+[connection signal="body_entered" from="area3d/no_grabpack area" to="." method="_on_no_grabpack_area_body_entered"]
+[connection signal="body_exited" from="area3d/no_grabpack area" to="." method="_on_no_grabpack_area_body_exited"]
 [connection signal="jumped" from="purple_panel" to="." method="_on_purple_panel_jumped"]
 [connection signal="collected" from="Collectable Hand" to="." method="_on_collectable_hand_collected"]
